@@ -5,6 +5,7 @@ const conn = require('./database/connection');
 const auth = require('./routes/auth');
 const otp = require('./routes/otp')
 const bodyParser =  require('body-parser');
+const staff = require('./routes/staff')
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.get("/", (req, res) => {
@@ -12,9 +13,11 @@ app.get("/", (req, res) => {
 });
 app.use("/api/auth",auth);
 app.use("/",otp);
+app.use('/',staff);
 conn();
 
 
 app.listen(3000, () => {
     console.log("Server is running at port 5000");
 });
+
